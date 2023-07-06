@@ -1,0 +1,17 @@
+html {
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+}
+
+body {
+  min-width: 320px;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  text-align: center;
+  background: url('./../img/bg.jpg') center/cover, rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  transition: all 1s ease-in-out;
+}

@@ -1,0 +1,148 @@
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+  min-height: 260px;
+  padding: 20px;
+}
+
+.time {
+  min-height: 124px;
+  margin-bottom: 10px;
+  font-size: 110px;
+  font-weight: 700;
+  transition: all 0.3s ease-in;
+}
+
+.date {
+  min-height: 28px;
+  font-size: 30px;
+  font-style: italic;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in;
+}
+
+.greeting-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  width: 100vw;
+  font-size: 44px;
+  transition: all 0.3s ease-in;
+}
+
+.greeting {
+  min-width: 30%;
+  padding: 10px;
+  text-align: right;
+}
+
+.name {
+  padding: 10px;
+  font-size: 44px;
+  text-align: left;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.name::placeholder {
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+@media (max-width: 1199px) {
+  .time {
+    font-size: 90px;
+  }
+
+  .date {
+    font-size: 26px;
+  }
+
+  .greeting {
+    min-width: 40%;
+  }
+
+  .greeting-container {
+    font-size: 38px;
+  }
+
+  .name {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .time {
+    font-size: 90px;
+  }
+
+  .date {
+    font-size: 26px;
+  }
+
+  .greeting-container {
+    font-size: 38px;
+  }
+
+  .greeting {
+    min-width: 50%;
+  }
+
+  .name {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 959px) {
+  .time {
+    font-size: 80px;
+  }
+
+  .date {
+    font-size: 24px;
+  }
+
+  .greeting-container {
+    font-size: 32px;
+  }
+
+  .name {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 730px) {
+  .greeting {
+    text-align: center;
+  }
+
+  .name {
+    text-align: center;
+  }
+}
+
+@media (max-width: 599px) {
+  .time {
+    font-size: 60px;
+  }
+
+  .greeting-container {
+    font-size: 24px;
+  }
+
+  .name {
+    font-size: 24px;
+    width: 100%;
+  }
+}
