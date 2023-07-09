@@ -14,7 +14,7 @@ function showWeather() {
       const response = await fetch(URL);
       if (!response.ok) {
         throw new Error(
-          'Что-то пошло не так. Проверьте правильность введенного запроса...'
+          'Something went wrong. Check if the query you entered is correct...'
         );
       }
       const data = await response.json();
@@ -38,15 +38,16 @@ function showWeather() {
     }
   }
 
-  function changeCity () {
+  function changeCity() {
     getWeather();
-    localStorage.setItem('city', city.value);
+    if (weatherError.textContent !== '') {
+      localStorage.setItem('city', city.value);
+    }
   }
 
   getWeather();
 
   city.addEventListener('change', changeCity);
-
 
   window.addEventListener('load', () => {
     if (localStorage.getItem('city')) {
