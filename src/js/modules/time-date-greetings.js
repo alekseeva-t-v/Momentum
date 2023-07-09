@@ -8,7 +8,7 @@ function showGreetingContainer() {
   const time = document.querySelector('.time');
   const date = document.querySelector('.date');
 
-  name.addEventListener('blur', () => {
+  name.addEventListener('change', () => {
     localStorage.setItem('name', name.value);
   });
 
