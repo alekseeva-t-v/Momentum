@@ -10,6 +10,33 @@
   padding: 20px;
 }
 
+.slider-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slide-prev {
+  left: 20px;
+  background-image: url('./../img/svg/slider-prev.svg');
+}
+
+.slide-next {
+  right: 20px;
+  background-image: url('./../img/svg/slider-next.svg');
+}
+
 .time {
   min-height: 124px;
   margin-bottom: 10px;
