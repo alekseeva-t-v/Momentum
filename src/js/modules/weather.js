@@ -48,7 +48,8 @@ function showWeather() {
    */
   function changeCityHandler() {
     getWeather();
-    if (weatherError.textContent !== '') {
+    console.log(weatherError.textContent)
+    if (weatherError.textContent === '') {
       localStorage.setItem('city', city.value);
     }
   }
