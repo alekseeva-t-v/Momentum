@@ -15,7 +15,7 @@ function showQuote() {
    *
    */
   async function getQuoteHandler() {
-    const URL = `./../files/json/quote-en.json`;
+    const URL = `./files/json/quote-en.json`;
     try {
       const response = await fetch(URL);
       if (!response.ok) {
