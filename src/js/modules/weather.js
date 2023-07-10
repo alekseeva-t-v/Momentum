@@ -7,6 +7,10 @@ function showWeather() {
   const city = document.querySelector('.city');
   const weatherError = document.querySelector('.weather-error');
 
+  /**
+   * Получает данные о погоде с удаленного сервера. Выводит их на экран в случае успеха и информацию об ошибке, в случае ошибки
+   *
+   */
   async function getWeather() {
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=34a8094155f7b4c99e972c8d19d77c1a&units=metric`;
 
@@ -38,22 +42,32 @@ function showWeather() {
     }
   }
 
-  function changeCity() {
+  /**
+   * Вызывает повтроно функцию отображения погоды. Обновляет данные города в localStorage (если такой город есть). Вызывается в случае, если пользователь ввел новый город.
+   *
+   */
+  function changeCityHandler() {
     getWeather();
     if (weatherError.textContent !== '') {
       localStorage.setItem('city', city.value);
     }
   }
 
-  getWeather();
-
-  city.addEventListener('change', changeCity);
-
-  window.addEventListener('load', () => {
+  /**
+   * Извлекает из localStorage название города, если он там есть. Вызывается при загрузке страницы
+   *
+   */
+  function getCityHandler() {
     if (localStorage.getItem('city')) {
       city.value = localStorage.getItem('city');
     }
-  });
+  }
+
+  getWeather();
+
+  city.addEventListener('change', changeCityHandler);
+
+  window.addEventListener('load', getCityHandler);
 }
 
 export default showWeather;

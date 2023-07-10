@@ -1,3 +1,5 @@
+import timeOfDay from "../function/timeOfDay";
+
 /**
  * Отображает на странице блок с датой, временем, текстом приветствия.
  *
@@ -8,15 +10,29 @@ function showGreetingContainer() {
   const time = document.querySelector('.time');
   const date = document.querySelector('.date');
 
-  name.addEventListener('change', () => {
-    localStorage.setItem('name', name.value);
-  });
+  /**
+   * Обновляет данные имени в localStorage. Вызывается в случае, если пользователь ввел новое имя.
+   *
+   */
+  function changeNameHandler() {
+    if (name.value.trim().length) {
+      localStorage.setItem('name', name.value);
+    }
+  }
 
-  window.addEventListener('load', () => {
+  /**
+   * Извлекает из localStorage имя, если оно там есть. Вызывается при загрузке страницы
+   *
+   */
+  function getNameHandler() {
     if (localStorage.getItem('name')) {
       name.value = localStorage.getItem('name');
     }
-  });
+  }
+
+  name.addEventListener('change', changeNameHandler);
+
+  window.addEventListener('load', getNameHandler);
 
   /**
    * Обновляет на странице дату, время, текст приветствия.
@@ -34,23 +50,5 @@ function showGreetingContainer() {
 
   setInterval(updateGreetingContainer, 1000);
 }
-
-/**
- * Возвращает название времени суток, в зависимости от определенного часа.
- *
- * @param {number} hours Числовое значение часа.
- * @return {string} время суток.
- */
-export const timeOfDay = (hours) => {
-  if (hours >= 6 && hours < 12) {
-    return 'morning';
-  } else if (hours >= 12 && hours < 17) {
-    return 'afternoon';
-  } else if (hours >= 17 && hours < 24) {
-    return 'evening';
-  } else {
-    return 'night';
-  }
-};
 
 export default showGreetingContainer;

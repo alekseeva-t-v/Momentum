@@ -1,3 +1,6 @@
+import randomIntInclusive from "../function/randomIntInclusive";
+import timeOfDay from "../function/timeOfDay";
+
 function showSlider() {
   const body = document.querySelector('body');
   const slideNext = document.querySelector('.slide-next');
@@ -67,36 +70,5 @@ function showSlider() {
     setBg(timeOfDay, getSlidePrev());
   });
 }
-
-/**
- * Возвращает случайное число из заданного диапазона.
- *
- * @param {number} min Минимальное число диапазона (включительно).
- * @param {number} max Максимальное число диапазона (включительно).
- * @return {number} случайное число из диапазона.
- */
-const randomIntInclusive = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-/**
- * Возвращает название времени суток, в зависимости от определенного часа.
- *
- * @param {number} hours Числовое значение часа.
- * @return {string} время суток.
- */
-export const timeOfDay = (hours) => {
-  if (hours >= 6 && hours < 12) {
-    return 'morning';
-  } else if (hours >= 12 && hours < 17) {
-    return 'afternoon';
-  } else if (hours >= 17 && hours < 24) {
-    return 'evening';
-  } else {
-    return 'night';
-  }
-};
 
 export default showSlider;

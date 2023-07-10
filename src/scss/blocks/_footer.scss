@@ -5,8 +5,57 @@
 
 .footer__content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   min-height: 160px;
   padding: 20px;
+}
+
+.quote-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 0.3s ease-in;
+}
+
+.quote {
+  max-width: 650px;
+  min-height: 32px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  transition: all 0.3s ease-in;
+}
+
+.author {
+  min-height: 20px;
+  font-size: 18px;
+  font-style: italic;
+  transition: all 0.3s ease-in;
+}
+
+.change-quote {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 30px;
+  background-image: url('./../img/svg/reload.svg');
+  background-size: 32px 32px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.change-quote:hover {
+  opacity: 1;
+}
+
+.change-quote:active {
+  border: 0;
+  outline: 0;
+  transform: scale(1.1);
 }
