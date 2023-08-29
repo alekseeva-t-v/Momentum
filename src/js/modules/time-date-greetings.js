@@ -9,6 +9,8 @@ function showGreetingContainer() {
   const name = document.querySelector('.name');
   const time = document.querySelector('.time');
   const date = document.querySelector('.date');
+  const timeBlock = document.querySelector('.time-block')
+  const preloader = document.querySelector('#preloader');
 
   /**
    * Обновляет данные имени в localStorage. Вызывается в случае, если пользователь ввел новое имя.
@@ -49,6 +51,11 @@ function showGreetingContainer() {
   }
 
   setInterval(updateGreetingContainer, 1000);
+
+  setTimeout(function () {
+    preloader.remove();
+    timeBlock.style.display = 'flex';
+  }, 1000);
 }
 
 export default showGreetingContainer;

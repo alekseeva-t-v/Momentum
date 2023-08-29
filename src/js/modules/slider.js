@@ -1,74 +1,70 @@
-import randomIntInclusive from "../function/randomIntInclusive";
-import timeOfDay from "../function/timeOfDay";
-
+/**
+ * Отвечает за работу слайдера. Периодическая смена слайдев. Управление с помощью кнопок-точек
+ *
+ */
 function showSlider() {
-  const body = document.querySelector('body');
-  const slideNext = document.querySelector('.slide-next');
-  const slidePrev = document.querySelector('.slide-prev');
+  const slidesList = document.querySelectorAll('.about__slide');
+  const dotsList = document.querySelectorAll('.about__dot');
 
-  let randomNum = 0;
-
-  /**
-   * Возвращает число в заданном диапазоне, преобразованное в строку с добавлением 0 в начале, если чесло однозначное.
-   *
-   * @return {string} преобразованное в необходимый формат число.
-   */
-  function getRandomNum() {
-    return String(randomIntInclusive(1, 20)).padStart(2, '0');
-  }
+  let index = 0;
 
   /**
-   * Обновляет фон страницы в соответствии с заданными параметрами.
+   * Отвечает за смену активного слайда. Удаляет активный класс у всех слайдов, добавляет активный класс, выбранному слайду
    *
-   * @param {function} timeOfDay функция определяющая время суток.
-   * @param {string} bgNum преобразованный в необходимый строковый формат номер изображения.
+   * @param {number} slideIndex Индекс активного слайда.
    */
-  function setBg(timeOfDay, bgNum) {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-    const img = new Image();
-    randomNum = bgNum;
-    img.src = `./img/${timeOfDay(hours)}/${bgNum}.jpg`;
-    img.addEventListener('load', () => {
-      body.style.backgroundImage = `url(${img.src})`;
+  function activeSlide(slideIndex) {
+    slidesList.forEach((slide) => {
+      slide.classList.remove('about__slide--active');
     });
-  }
 
-  setBg(timeOfDay, getRandomNum());
-
-  /**
-   * Обновляет номер изображения, вызывается при нажатии на кнопку вперед.
-   *
-   * @return {string} преобразованный в необходимый строковый формат номер изображения.
-   */
-  function getSlideNext() {
-    if (randomNum < 20) {
-      return String(++randomNum).padStart(2, '0');
-    } else {
-      return String((randomNum = 1)).padStart(2, '0');
-    }
+    slidesList[slideIndex].classList.add('about__slide--active');
   }
 
   /**
-   * Обновляет номер изображения, вызывается при нажатии на кнопку назад.
+   * Отвечает за смену активной кнопки-точки. Удаляет активный класс у всех кнопок-точек, добавляет активный класс, конкретной кнопке-точке
    *
-   * @return {string} преобразованный в необходимый строковый формат номер изображения.
+   * @param {number} dotIndex Индекс активной кнопки-точки.
    */
-  function getSlidePrev() {
-    if (randomNum > 1) {
-      return String(--randomNum).padStart(2, '0');
+  function activeDot(dotIndex) {
+    dotsList.forEach((dot) => {
+      dot.classList.remove('about__dot--active');
+    });
+
+    dotsList[dotIndex].classList.add('about__dot--active');
+  }
+
+  /**
+   * Объединяет и одновременно вызывает функции смены активного слайда и активной кнопки-точки
+   *
+   * @param {number} index Индекс активного элемента.
+   */
+  function prepareCurrentSlide(index) {
+    activeSlide(index);
+    activeDot(index);
+  }
+
+  /**
+   * Отвечает за переключение слайда на следующий. Если слайд последний, происходит переключение на первый слайд
+   *
+   */
+  function nextSlide() {
+    if (index === slidesList.length - 1) {
+      index = 0;
+      prepareCurrentSlide(index);
     } else {
-      return String((randomNum = 20)).padStart(2, '0');
+      index++;
+      prepareCurrentSlide(index);
     }
   }
 
-  slideNext.addEventListener('click', function () {
-    setBg(timeOfDay, getSlideNext());
+  dotsList.forEach((dot, dotIndex) => {
+    dot.addEventListener('click', () => {
+      prepareCurrentSlide(dotIndex);
+    });
   });
 
-  slidePrev.addEventListener('click', function () {
-    setBg(timeOfDay, getSlidePrev());
-  });
+  setInterval(nextSlide, 4000);
 }
 
 export default showSlider;

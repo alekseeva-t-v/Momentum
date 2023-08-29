@@ -1,23 +1,43 @@
 <header class="header">
-  <div class="player">
-    <div class="player-controls">
-      <button class="play-prev player-icon"></button>
-      <button class="play player-icon"></button>
-      <button class="play-next player-icon"></button>
+  <div class="container">
+    <div class="header__top-inner">
+      <div class="logo">
+        <a class="logo__link" href="./index.html"
+          ><strong class="lng-progect">Project</strong></a
+        >
+      </div>
+      <div class="settings">
+        <button class="lang-btn">
+          <span class="lang__elem">Ru</span>
+          <span class="lang__elem">En</span>
+        </button>
+        <button class="light-mode-btn">
+          <img
+            class="light-mode-btn__icon"
+            src="./img/svg/moon.svg"
+            alt="Dark mode"
+          >
+          <img
+            class="light-mode-btn__icon"
+            src="./img/svg/sun.svg"
+            alt="Light mode"
+          >
+        </button>
+      </div>
+      <nav class="menu">
+        <ul class="menu__list">
+          <li class="menu__list-item">
+            <a
+              class="lng-portfolio menu__link"
+              href="https://alekseeva-t-v.github.io/portfolio/"
+              >Portfolio</a
+            >
+          </li>
+          <li class="menu__list-item">
+            <a class="lng-about menu__link" href="./about.html">About the project</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <ul class="play-list"></ul>
-  </div>
-  <div class="weather">
-    <input type="text" class="city" placeholder="Your city" value="Moscow" />
-    <i class="weather-icon owf"></i>
-    <p class="weather-error"></p>
-    <div class="description-container">
-      <span class="temperature"></span>
-      <span class="weather-description"></span>
-    </div>
-    <div class="wind"></div>
-    <div class="humidity"></div>
   </div>
 </header>
-
-<!-- @@include('mobile-nav.html') -->

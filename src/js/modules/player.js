@@ -1,5 +1,9 @@
 import allMusic from './music-list';
 
+/**
+ * Отображает на странице блок с аудиоплеером.
+ *
+ */
 function showPlayer() {
   const playList = allMusic;
   const play = document.querySelector('.play');
@@ -12,16 +16,24 @@ function showPlayer() {
 
   const audio = new Audio();
 
+  /**
+   * Определяет ссылку на воспроизводимую композицию, указав, что воспроизведение необходимо начать с начала. Включает воспроизведение мелодии, изменив при этом значение флага isPlay. Дополнительно вызывает функции findItemActive (поиск активного элемента плэй листа) и toggleBtn (Смена отображения значка на кнопке)
+   *
+   */
   function playAudio() {
     audio.src = `./files/music/${playList[playNum].src}.mp3`;
     audio.currentTime = 0;
-    console.log(audio.src);
     audio.play();
     isPlay = true;
+
     findItemActive();
     toggleBtn();
   }
 
+  /**
+   * Останавливает воспроизведение мелодии, изменив при этом значение флага isPlay. Дополнительно вызывает функции cleanStylesPlayList (очистка стилей плэй листа) и toggleBtn (Смена отображения значка на кнопке)
+   *
+   */
   function pauseAudio() {
     audio.pause();
     isPlay = false;
@@ -30,6 +42,10 @@ function showPlayer() {
     toggleBtn();
   }
 
+  /**
+   * Меняет значек на кнопке в зависимости от того играет мелодия или нет
+   *
+   */
   function toggleBtn() {
     if (isPlay) {
       play.classList.add('pause');
@@ -38,18 +54,30 @@ function showPlayer() {
     }
   }
 
+  /**
+   * Начинает воспроизведение следующей в плей листе мелодии, вызывается  при нажатии на кнопку Play-Next
+   *
+   */
   function playNextHandler() {
     playNum = playNum < playList.length - 1 ? playNum + 1 : 0;
 
     playAudio();
   }
 
+  /**
+   * Начинает воспроизведение предыдущей в плей листе мелодии, вызывается  при нажатии на кнопку Play-Prev
+   *
+   */
   function playPrevHandler() {
     playNum = playNum > 0 ? playNum - 1 : playList.length - 1;
 
     playAudio();
   }
 
+  /**
+   * Начинает или останавливает воспроизведение мелодии, вызывается  при нажатии основной кнопки плеера
+   *
+   */
   function controlAudioHandler() {
     if (!isPlay) {
       playAudio();
@@ -58,6 +86,10 @@ function showPlayer() {
     }
   }
 
+  /**
+   * Создает и выводит на экран плей лист, опираясь на массив со списком мелодий, формирует для каждой мелодии кнопку и вешает на нее событие нажатия
+   *
+   */
   function createPlayList() {
     playList.forEach((element, index) => {
       const item = document.createElement('li');
@@ -82,6 +114,10 @@ function showPlayer() {
     });
   }
 
+  /**
+   * Находит в плей листе мелодию, которая сейчас играет и меняет ее отображение
+   *
+   */
   function findItemActive() {
     const itemList = cleanStylesPlayList();
 
@@ -96,6 +132,11 @@ function showPlayer() {
     searchItemBtn.classList.add('pause');
   }
 
+  /**
+   * Удаляет активные стили со всех элементов плей листа
+   *
+   * @return {object} массив элементов плей листа.
+   */
   function cleanStylesPlayList() {
     const itemList = Array.from(document.querySelectorAll('.play-item'));
     const buttonList = Array.from(document.querySelectorAll('.play-min'));
@@ -116,7 +157,7 @@ function showPlayer() {
   play.addEventListener('click', controlAudioHandler);
   playNext.addEventListener('click', playNextHandler);
   playPrev.addEventListener('click', playPrevHandler);
-  audio.addEventListener('ended', playNextHandler)
+  audio.addEventListener('ended', playNextHandler);
 }
 
 export default showPlayer;
