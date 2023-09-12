@@ -1,4 +1,7 @@
 import allMusic from './music-list';
+import updateLocal from '../function/updateLocal';
+import settings from './settings';
+import hideShowBlock from '../function/hideShowBlock';
 
 /**
  * Отображает на странице блок с аудиоплеером.
@@ -7,7 +10,7 @@ import allMusic from './music-list';
 function showPlayer() {
   const playList = allMusic;
 
-  const player = document.querySelector('.player')
+  const playerBlock = document.querySelector('.player');
   const playBtn = document.querySelector('.player__controls-play');
   const playPrevBtn = document.querySelector('.player__controls-play-prev');
   const playNextBtn = document.querySelector('.player__controls-play-next');
@@ -20,14 +23,37 @@ function showPlayer() {
   const musicCurrentTime = document.querySelector('.player__progress-current');
   const musicDuration = document.querySelector('.player__progress-duration');
   const artist = document.querySelector('.player__artist');
-  const songName = document.querySelector('.player__song-name')
+  const songName = document.querySelector('.player__song-name');
   const playListContainer = document.querySelector('.player__play-list');
+
+  const checkAudio = document.getElementById('check-audio');
+
+  if (!settings.blocks.includes('audio')) {
+    checkAudio.checked = false;
+    hideShowBlock(checkAudio, playerBlock, 'audio');
+  }
 
   let isPlay = false;
   let playNum = 0;
   let currentValue = 0;
 
   const audio = new Audio();
+
+  // function hideShowPlayerHandler() {
+  //   if (!checkAudio.checked) {
+  //     playerBlock.classList.add('hide');
+  //     settings.blocks.forEach((block, index) => {
+  //       if (block === 'audio') {
+  //         settings.blocks.splice(index, 1);
+  //       }
+  //     });
+  //     updateLocal()
+  //   } else {
+  //     playerBlock.classList.remove('hide');
+  //     settings.blocks.push('audio');
+  //     updateLocal()
+  //   }
+  // }
 
   /**
    * Запускает воспроизведение композиции (1) Определяет ссылку на воспроизводимую композици. (2) Указывает, что воспроизведение нужно начать со значения определенного currentValue (изначально 0 - начало композиции). (3) Включает воспроизведение мелодии. (4) Изменяет значение флага isPlay. (5) После загрузки композиции выводит время звучания (6) Дополнительно вызывает функции findItemActive (поиск активного элемента плэй листа) и toggleBtn (Смена отображения значка на кнопке)
@@ -215,9 +241,9 @@ function showPlayer() {
     playListContainer.classList.toggle('player__play-list--active');
   });
 
-  player.addEventListener('click', (event) => {
+  playerBlock.addEventListener('click', (event) => {
     event._isClickWithInPlayList = true;
-  })
+  });
 
   document.body.addEventListener('click', (event) => {
     if (event._isClickWithInPlayList) return;
@@ -238,6 +264,10 @@ function showPlayer() {
     audio.muted = !audio.muted;
     soundOffBtn.classList.toggle('player__controls-sound-on');
     soundOffBtn.classList.toggle('player__controls-sound-off');
+  });
+
+  checkAudio.addEventListener('change', () => {
+    hideShowBlock(checkAudio, playerBlock, 'audio');
   });
 }
 

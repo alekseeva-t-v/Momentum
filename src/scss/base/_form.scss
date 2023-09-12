@@ -1,0 +1,136 @@
+.form {
+  font-family: 'Montserrat', sans-serif;;
+  &__group {
+    position: relative;
+    display: flex;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 0 0 30px 10px;
+  }
+
+  &__hint {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.field {
+  width: 300px;
+  padding: 5px 10px;
+  border: 1px solid #222222;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+
+  &:focus {
+    outline: 2px solid #b68d4c;
+    outline-offset: 4px;
+  }
+}
+
+.radio {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+  &__style {
+    position: absolute;
+    top: 3px;
+
+    width: 16px;
+    height: 16px;
+    margin-left: 0px;
+
+    border: 2px solid #b68d4c;
+    border-radius: 50%;
+  }
+
+  &:checked + .radio__style::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    background-color: #b68d4c;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  &:disabled + .radio__style {
+    border-color: #cccccc;
+  }
+
+  &:checked:disabled + .radio__style::before {
+    background-color: #cccccc;
+  }
+
+  &__text {
+    margin-left: 25px;
+    transition: all 0.5s;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.check-box--switch {
+  position: relative;
+  opacity: 0;
+}
+
+.check-box--switch + label {
+  position: relative;
+  padding: 0 0 0 40px;
+  cursor: pointer;
+}
+
+.check-box--switch + label:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 32px;
+  height: 16px;
+  border-radius: 13px;
+  background: #cdd1da;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.check-box--switch + label::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.check-box--switch:checked + label::before {
+  background: #b68d4c;
+}
+
+.check-box--switch:checked + label::after {
+  left: 17px;
+}

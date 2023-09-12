@@ -1,18 +1,28 @@
+import settings from './settings';
+import vars from './vars';
+import hideShowBlock from '../function/hideShowBlock';
+
 function showWeather() {
-  const weatherIcon = document.querySelector('.weather-icon');
-  const temperature = document.querySelector('.temperature');
-  const weatherDescription = document.querySelector('.weather-description');
-  const wind = document.querySelector('.wind');
-  const humidity = document.querySelector('.humidity');
-  const city = document.querySelector('.city');
-  const weatherError = document.querySelector('.weather-error');
+  let hash = window.location.hash.substr(1);
+
+  const {weatherBlock, weatherIcon, weatherDescription, weatherError, temperature, wind, humidity, city, checkWeather} = vars;
+  city.placeholder = hash === 'en' ? 'Your city' : 'Ваш город';
+
+  if (!localStorage.getItem('city')) {
+    city.value = hash === 'en' ? 'Moscow' : 'Москва';
+  }
+
+  if (!settings.blocks.includes('weather')) {
+    checkWeather.checked = false;
+    hideShowBlock(checkWeather, weatherBlock, 'weather');
+  }
 
   /**
    * Получает данные о погоде с удаленного сервера. Выводит их на экран в случае успеха и информацию об ошибке, в случае ошибки
    *
    */
   async function getWeather() {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=34a8094155f7b4c99e972c8d19d77c1a&units=metric`;
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${hash}&appid=34a8094155f7b4c99e972c8d19d77c1a&units=metric`;
 
     try {
       const response = await fetch(URL);
@@ -28,8 +38,14 @@ function showWeather() {
         weatherIcon.classList.add(`owf-${data.weather[0].id}`);
         temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
         weatherDescription.textContent = data.weather[0].description;
-        wind.textContent = `Wind speed: ${data.wind.speed.toFixed(0)} m/s`;
-        humidity.textContent = `Humidity: ${data.main.humidity} %`;
+        wind.textContent =
+          hash === 'en'
+            ? `Wind speed: ${data.wind.speed.toFixed(0)} m/s`
+            : `Скорость ветра: ${data.wind.speed.toFixed(0)} м/с`;
+        humidity.textContent =
+          hash === 'en'
+            ? `Humidity: ${data.main.humidity} %`
+            : `Влажность: ${data.main.humidity} %`;
         weatherError.textContent = '';
       }
     } catch (error) {
@@ -48,7 +64,6 @@ function showWeather() {
    */
   function changeCityHandler() {
     getWeather();
-    console.log(weatherError.textContent)
     if (weatherError.textContent === '') {
       localStorage.setItem('city', city.value);
     }
@@ -67,6 +82,10 @@ function showWeather() {
   getWeather();
 
   city.addEventListener('change', changeCityHandler);
+
+  checkWeather.addEventListener('change', () => {
+    hideShowBlock(checkWeather, weatherBlock, 'weather');
+  });
 
   window.addEventListener('load', getCityHandler);
 }

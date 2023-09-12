@@ -1,4 +1,4 @@
-.main--momentum {
+.main {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,8 @@
   height: 30vh;
   min-height: 260px;
   padding: 20px;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
 .slider-icon {
@@ -40,6 +42,7 @@
 .time-block {
   display: none;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
 }
 
 .time {

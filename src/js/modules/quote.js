@@ -1,21 +1,29 @@
 import randomIntInclusive from '../function/randomIntInclusive';
+import hideShowBlock from '../function/hideShowBlock';
+import vars from './vars';
+import settings from './settings';
 
 /**
  * Отображает на странице блок с цитатой.
  *
  */
 function showQuote() {
-  const quoteWrapper = document.querySelector('.quote-wrapper');
-  const quote = document.querySelector('.quote');
-  const author = document.querySelector('.author');
-  const changeQuote = document.querySelector('.change-quote');
+  let hash = window.location.hash.substr(1);
+
+  const {quoteWrapper, quote, author, changeQuote, checkQuote} = vars;
+
+  if (!settings.blocks.includes('quote')) {
+    checkQuote.checked = false;
+    hideShowBlock(checkQuote, quoteWrapper, 'quote');
+  }
 
   /**
    * Отвечает за получение данных о цитате и авторе и выводит их на страницу. Вызывается при обновлении страницы и нажатии на кнопку обновления
    *
    */
-  async function getQuoteHandler() {
-    const URL = `./files/json/quote-en.json`;
+  async function getQuoteHandler(lang) {
+    const URL = `./files/json/quote-${lang}.json`;
+
     try {
       const response = await fetch(URL);
       if (!response.ok) {
@@ -30,9 +38,13 @@ function showQuote() {
     }
   }
 
-  window.addEventListener('load', getQuoteHandler);
+  checkQuote.addEventListener('change', () => {
+    hideShowBlock(checkQuote, quoteWrapper, 'quote');
+  });
 
-  changeQuote.addEventListener('click', getQuoteHandler);
+  window.addEventListener('load', getQuoteHandler(hash));
+
+  changeQuote.addEventListener('click', () => getQuoteHandler(hash));
 }
 
 export default showQuote;

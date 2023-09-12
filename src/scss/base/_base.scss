@@ -9,12 +9,6 @@ html {
   min-height: 100%;
 }
 
-.main {
-  flex-grow: 1;
-  width: 100%;
-  background-color: var(--page-bg);
-}
-
 .content {
   flex: 1 0 auto;
 }
@@ -101,6 +95,11 @@ html {
   margin-bottom: 30px;
 
   background-color: var(--blue-bright);
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 1200px) {

@@ -1,58 +1,62 @@
 export const langArr = {
-  'page-main': {
-    'ru': 'Новый Год - Обратный отсчет',
-    'en': 'New Year - Countdown',
-  },
-  'about-project': {
-    'ru': 'О проекте',
-    'en': 'About the project',
-  },
-  'progect': {
-    'ru': 'Проект',
-    'en': 'Project',
-  },
-  'mini': {
-    'ru': 'мини',
-    'en': 'mini',
-  },
-  'portfolio': {
-    'ru': 'Портфолио',
-    'en': 'Portfolio',
-  },
-  'about': {
-    'ru': 'О проекте',
-    'en': 'About the project',
-  },
-  'title': {
-    'ru': 'Контакты',
-    'en': 'Contacts',
-  },
   'copy': {
     'ru': 'Алексеева Татьяна',
     'en': 'Alekseeva Tatyana',
   },
-  'days': {
-    'ru': 'дней',
-    'en': 'days',
+  'settings': {
+    'ru': 'Настройки',
+    'en': 'Settings',
   },
-  'hours': {
-    'ru': 'часов',
-    'en': 'hours',
+  'language': {
+    'ru': 'Язык',
+    'en': 'Language',
   },
-  'minutes': {
-    'ru': 'минут',
-    'en': 'minutes',
+  'english': {
+    'ru': 'английский',
+    'en': 'english',
   },
-  'seconds': {
-    'ru': 'секунд',
-    'en': 'seconds',
+  'russian': {
+    'ru': 'русский',
+    'en': 'russian',
   },
-  'title-project': {
-    'ru': 'Таймер обратного отсчета',
-    'en': 'Countdown timer',
+  'bg': {
+    'ru': 'Источник фонового изображения',
+    'en': 'Source for background image',
   },
-  'about-project': {
-    'ru': 'Простой таймер обратного отсчета с днями, часами, минутами и секундами. Отслеживает время до наступления нового года. Обновление происходит каждую секунду. Адаптивная верстка для экранов 320px и выше.',
-    'en': 'A simple countdown timer with days, hours, minutes and seconds. Tracks the time until the new year. The update happens every second. Responsive layout for screens 320px and above.',
+  'tag': {
+    'ru': 'Тег фонового изображения',
+    'en': 'Background image tag',
+  },
+  'show-block': {
+    'ru': 'Показать / Скрыть блок',
+    'en': 'Show / Hide block',
+  },
+  'player': {
+    'ru': 'Аудиоплеер',
+    'en': 'Audio player',
+  },
+  'weather': {
+    'ru': 'Погода',
+    'en': 'Weather',
+  },
+  'time': {
+    'ru': 'Время',
+    'en': 'Time',
+  },
+  'date': {
+    'ru': 'Дата',
+    'en': 'Date',
+  },
+  'greetings': {
+    'ru': 'Приветствие',
+    'en': 'Greetings',
+  },
+  'todo': {
+    'ru': 'Список дел',
+    'en': 'ToDoList',
+  },
+  'quote': {
+    'ru': 'Цитата',
+    'en': 'Quote',
   }
 };

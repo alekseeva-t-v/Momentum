@@ -1,37 +1,169 @@
 <footer class="footer">
-  <div class="container">
-    <div class="footer__content-inner">
-      <ul class="footer__social">
-        <li class="footer__social-item">
-          <a href="https://github.com/alekseeva-t-v" target="_blank">
-            @@include('./social-icon/github.html')
-          </a>
-        </li>
-        <li class="footer__social-item">
-          <a
-            href="https://discordapp.com/users/999628349792071682/"
-            target="_blank"
-          >
-            @@include('./social-icon/discord.html')
-          </a>
-        </li>
-        <li class="footer__social-item">
-          <a href="https://t.me/alekseeva_tatiana_vi" target="_blank">
-            @@include('./social-icon/telegram.html')
-          </a>
-        </li>
-        <li class="footer__social-item">
-          <a href="https://wa.me/79509209779" target="_blank">
-            @@include('./social-icon/whatsapp.html')
-          </a>
-        </li>
-        <li class="footer__social-item">
-          <a href="https://vk.com/alexeeva_t_v" target="_blank">
-            @@include('./social-icon/vk.html')
-          </a>
-        </li>
-      </ul>
-      <div class="footer__copy">@2023 <span class="lng-copy">Alekseeva Tatyana</span></div>
+  <div class="footer__content">
+    <div class="settings__wrapper">
+      <div class="settings__block">
+        <div class="settings__text">
+          <form action="#!" class="form" name="formSettings">
+            <h2 class="settings__title lng-language">Language</h2>
+            <div class="form__row">
+              <label class="form__group">
+                <input
+                  class="radio radio-lang"
+                  type="radio"
+                  name="language"
+                  id="en"
+                  checked
+                />
+                <span class="radio__style"></span>
+                <p class="radio__text lng-english">english</p>
+              </label>
+              <label class="form__group">
+                <input
+                  class="radio radio-lang"
+                  type="radio"
+                  name="language"
+                  id="ru"
+                />
+                <span class="radio__style"></span>
+                <p class="radio__text lng-russian">russian</p>
+              </label>
+            </div>
+            <h2 class="settings__title lng-bg">Source for background image</h2>
+            <div class="form__row">
+              <label class="form__group">
+                <input
+                  class="radio radio-bg"
+                  type="radio"
+                  name="source-bacground"
+                  id="github"
+                  checked
+                />
+                <span class="radio__style"></span>
+                <p class="radio__text">GitHub</p>
+              </label>
+              <label class="form__group">
+                <input
+                  class="radio radio-bg"
+                  type="radio"
+                  name="source-bacground"
+                  id="unsplash"
+                />
+                <span class="radio__style"></span>
+                <p class="radio__text">Unsplash API</p>
+              </label>
+              <label class="form__group">
+                <input
+                  class="radio radio-bg"
+                  type="radio"
+                  name="source-bacground"
+                  id="flickr"
+                />
+                <span class="radio__style"></span>
+                <p class="radio__text">Flickr API</p>
+              </label>
+            </div>
+            <h2 class="settings__title lng-tag">Background image tag</h2>
+            <div class="tag-list">
+            </div>
+            <div class="form__row">
+              <label class="form__group">
+                <input
+                  class="field"
+                  id="tag"
+                  type="text"
+                  placeholder="Enter tag"
+                />
+              </label>
+              <button class="plus-icon player__controls-icon" id="add-tag"></button>
+            </div>
+            <h2 class="settings__title lng-show-block">Show block</h2>
+            <div class="settings__show-block">
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-audio"
+                  checked
+                />
+                <label class="lng-player" for="check-audio">Audio player</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-weather"
+                  checked
+                />
+                <label class="lng-weather" for="check-weather">Weather</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-time"
+                  checked
+                />
+                <label class="lng-time" for="check-time">Time</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-date"
+                  checked
+                />
+                <label class="lng-date" for="check-date">Date</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-greetings"
+                  checked
+                />
+                <label class="lng-greetings" for="check-greetings">Greetings</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-todo"
+                  checked
+                />
+                <label class="lng-todo" for="check-todo">ToDoList</label>
+              </div>
+              <div class="form__group">
+                <input
+                  class="check-box--switch"
+                  type="checkbox"
+                  id="check-quote"
+                  checked
+                />
+                <label class="lng-quote" for="check-quote">Quote</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="settings__header">
+        <img src="./img/svg/settings.svg" alt="Settings" />
+        <p class="lng-settings">Settings</p>
+      </div>
+    </div>
+
+    <div class="quote__wrapper">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </div>
+
+    <div class="todo__wrapper">
+      <div class="todo__header">
+        <img src="./img/svg/task.svg" alt="Todo" />
+        <p>Todo</p>
+      </div>
     </div>
   </div>
 </footer>

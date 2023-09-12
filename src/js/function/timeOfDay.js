@@ -16,4 +16,16 @@ export const timeOfDay = (hours) => {
   }
 };
 
+export const timeOfDayRu = (hours) => {
+  if (hours >= 6 && hours < 12) {
+    return 'Доброе утро';
+  } else if (hours >= 12 && hours < 17) {
+    return 'Добрый день';
+  } else if (hours >= 17 && hours < 24) {
+    return 'Добрый вечер';
+  } else {
+    return 'Доброй ночи';
+  }
+};
+
 export default timeOfDay;
