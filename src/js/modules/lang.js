@@ -58,5 +58,17 @@ export const langArr = {
   'quote': {
     'ru': 'Цитата',
     'en': 'Quote',
-  }
+  },
+  'todo-title': {
+    'ru': 'Все задачи',
+    'en': 'All tasks',
+  },
+  'total-tasks': {
+    'ru': 'Все задачи:',
+    'en': 'All tasks:',
+  },
+  'completed-tasks': {
+    'ru': 'Выполненные задачи:',
+    'en': 'Сompleted tasks:',
+  },
 };

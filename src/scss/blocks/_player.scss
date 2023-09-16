@@ -1,0 +1,230 @@
+.player {
+  width: 400px;
+  transition: all 0.6s;
+
+  &__song-details {
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+
+  &__artist {
+    color: var(--accent-light);
+  }
+
+  &__progress {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    &-area {
+      height: 6px;
+      width: 300px;
+
+      background: var(--light);
+      border-radius: 50px;
+
+      cursor: pointer;
+
+      .player__progress-bar {
+        position: relative;
+
+        height: inherit;
+        width: 0%;
+
+        border-radius: inherit;
+        background: linear-gradient(
+          90deg,
+          var(--accent-light) 0%,
+          var(--accent) 100%
+        );
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 50%;
+          right: -5px;
+
+          height: 12px;
+          width: 12px;
+
+          background: inherit;
+          border-radius: inherit;
+
+          transition: opacity 0.2s ease;
+
+          transform: translateY(-50%);
+          opacity: 0;
+        }
+      }
+
+      &:hover .player__progress-bar::before {
+        opacity: 1;
+      }
+    }
+
+    &-timer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 20%;
+      margin-top: 2px;
+
+      span {
+        font-size: 16px;
+        color: var(--white);
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 80%;
+    padding-left: 20px;
+    margin-bottom: 28px;
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      background-size: 32px 32px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      opacity: 0.8;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        border: 0;
+        outline: 0;
+        transform: scale(1.1);
+      }
+
+      &--min {
+        width: 20px;
+        height: 20px;
+        background-size: 20px 20px;
+      }
+    }
+
+    &-play {
+      width: 40px;
+      height: 40px;
+      background-size: 40px 40px;
+      background-image: url('../img/svg/play.svg');
+
+      &--min {
+        width: 20px;
+        height: 20px;
+        background-size: 20px 20px;
+        background-image: url('../img/svg/play-dark.svg');
+      }
+    }
+
+    &-pause {
+      background-image: url('../img/svg/pause.svg');
+
+      &--min {
+        background-image: url('../img/svg/pause-gold.svg');
+      }
+    }
+
+    &-play-prev {
+      background-image: url('../img/svg/play-prev.svg');
+    }
+
+    &-play-next {
+      background-image: url('../img/svg/play-next.svg');
+    }
+
+    &-play-list {
+      background-image: url('../img/svg/playlist.svg');
+    }
+
+    &-sound-on {
+      background-image: url('../img/svg/sound-on.svg');
+    }
+
+    &-sound-off {
+      background-image: url('../img/svg/sound-off.svg');
+    }
+  }
+
+  &__play-list {
+    position: relative;
+    z-index: 10;
+    padding: 10px 5px;
+    border-radius: 15px;
+    text-align: left;
+
+    background: hwb(0 100% 0%);
+    color: var(--blackpure);
+    box-shadow: var(--box-shadow);
+
+    opacity: 0;
+    transform: translateY(-70%) scale(0);
+    transition: all 0.8s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 9;
+
+      width: 25px;
+      height: 45px;
+
+      background: var(--white);
+      top: -15px;
+      left: 20px;
+
+      transform: rotate(45deg);
+    }
+
+    &--active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  &__play-item {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding: 5px;
+    padding-left: 20px;
+    list-style: none;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--active {
+      color: var(--accent);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .player {
+    display: none;
+  }
+}

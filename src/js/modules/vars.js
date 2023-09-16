@@ -51,7 +51,15 @@ const vars = {
   changeQuote: document.querySelector('.change-quote'),
 
   // TODO block
-  todoWrapper: document.querySelector('.todo__wrapper')
+  todoWrapper: document.querySelector('.todo__wrapper'),
+  todoBlock: document.querySelector('.todo__block'),
+  todoBtn: document.querySelector('.todo__header'),
+  newTaskInput: document.getElementById('new-task'),
+  addTaskBtn: document.getElementById('add-task'),
+  todoList: document.getElementById('todo__list'),
+  todoCountAll: document.getElementById('todo-count-all'),
+  todoCountCompleted: document.getElementById('todo-count-completed'),
+  todoError: document.querySelector('.todo__error'),
 };
 
 export default vars;

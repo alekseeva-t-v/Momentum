@@ -71,11 +71,12 @@ radioLangList.forEach((radioElem) => {
     showWeather();
     showQuote();
     changeLanguagePage();
+    showTodo();
   });
 });
 
 settingsBtn.addEventListener('click', () => {
-  settingsBlock.classList.toggle('settings__block--active');
+  settingsBlock.classList.toggle('block--active');
 });
 
 settingsWrapper.addEventListener('click', (event) => {
@@ -84,5 +85,5 @@ settingsWrapper.addEventListener('click', (event) => {
 
 body.addEventListener('click', (event) => {
   if (event._isClickWithInSettingsBlock) return;
-  settingsBlock.classList.remove('settings__block--active');
+  settingsBlock.classList.remove('block--active');
 });

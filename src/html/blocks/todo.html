@@ -1,0 +1,35 @@
+<div class="todo__wrapper">
+  <div class="todo__block block block">
+    <div class="block__text">
+      <h2 class="todo__title block__title lng-todo-title">All tasks</h2>
+      <div class="todo__count">
+        <p class="todo__count-elem">
+          <span class="lng-total-tasks">Total tasks: </span
+          ><span id="todo-count-all">0</span>
+        </p>
+        <p class="todo__count-elem">
+          <span class="lng-completed-tasks">Сompleted tasks: </span>
+          <span id="todo-count-completed">0</span>
+        </p>
+      </div>
+      <div class="form__row">
+        <label class="form__group">
+          <input
+            class="field"
+            id="new-task"
+            type="text"
+            placeholder="New task"
+          />
+        </label>
+        <button class="plus-icon player__controls-icon" id="add-task"></button>
+      </div>
+      <p class="todo__error"></p>
+      <div id="todo__list">
+      </div>
+    </div>
+  </div>
+  <div class="todo__header">
+    <img src="./img/svg/task.svg" alt="Todo" />
+    <p class="lng-todo">Todo</p>
+  </div>
+</div>
