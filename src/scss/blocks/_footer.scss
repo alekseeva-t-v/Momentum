@@ -1,5 +1,6 @@
 .footer {
   height: 35vh;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -50,6 +51,12 @@
 
 		color: var(--white);
 	}
+}
+
+@media (max-width: 768px) {
+  .footer {
+    height: 45vh;
+  }
 }
 
 

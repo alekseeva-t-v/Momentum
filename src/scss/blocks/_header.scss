@@ -7,3 +7,10 @@
   min-height: 220px;
   padding: 20px;
 }
+
+@media (max-width: 768px) {
+  .header {
+    height: 10vh;
+    min-height: 100px;
+  }
+}

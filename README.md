@@ -120,5 +120,5 @@
 ![GULP](./public/images/gulp-badge.svg)
 ![WEBPACK](./public/images/webpack-badge.svg)
 
-## [**Демо**](https://alekseeva-t-v.github.io/countdown-new-year/)
+## [**Демо**](alekseeva-t-v.github.io/momentum/)
 ![demo](./public/images/demo.jpg)
