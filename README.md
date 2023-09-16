@@ -120,5 +120,5 @@
 ![GULP](./public/images/gulp-badge.svg)
 ![WEBPACK](./public/images/webpack-badge.svg)
 
-## [**Демо**](alekseeva-t-v.github.io/momentum/)
+## [**Демо**](https://alekseeva-t-v.github.io/momentum/)
 ![demo](./public/images/demo.jpg)
