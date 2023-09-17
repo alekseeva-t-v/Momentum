@@ -19,7 +19,7 @@ function showTodo() {
     todoCountCompleted,
   } = vars;
 
-  newTaskInput.placeholder = hash === 'ru' ? 'новая задача' : 'New task'
+  newTaskInput.placeholder = hash === 'ru' ? 'новая задача' : 'New task';
 
   let tasks;
 
@@ -35,9 +35,15 @@ function showTodo() {
   if (tasks.length) {
     tasksRender(tasks);
     showQuantityTasks(tasks);
-    showCompletedTasks(tasks)
+    showCompletedTasks(tasks);
   }
 
+  /**
+   * Отвечает за добавление задачи в массив задач.
+   *
+   * @param {string} text Текст задачи.
+   *
+   */
   function addTask(text) {
     tasks.push({
       id: Date.now(),
@@ -46,6 +52,13 @@ function showTodo() {
     });
   }
 
+  /**
+   * Проверяет наличие одноименной задачи в массиве задач. Возвращает булевое значение в зависимости от результата проверки
+   *
+   * @param {string} text Текст задачи.
+   * @param {object} tasksList Массив задач.
+   * @return {boolean} true - если такой задачи нет в списке, false - если есть.
+   */
   function isNotHaveTask(text, tasksList) {
     let isNotHave = true;
 
@@ -59,6 +72,11 @@ function showTodo() {
     return isNotHave;
   }
 
+  /**
+   * Формирует и выводит разметку со списком задач
+   *
+   * @param {object} tasksList Массив задач.
+   */
   function tasksRender(tasksList) {
     let htmlTasksList = '';
 
@@ -85,10 +103,20 @@ function showTodo() {
     todoList.innerHTML = htmlTasksList;
   }
 
+  /**
+   * Отображает на странице обшее количество задач
+   *
+   * @param {object} tasksList Массив задач.
+   */
   function showQuantityTasks(tasksList) {
     todoCountAll.textContent = tasksList.length;
   }
 
+  /**
+   * Отображает на странице количество выполненных задач
+   *
+   * @param {object} tasksList Массив задач.
+   */
   function showCompletedTasks(tasksList) {
     const completedTasksArr = tasksList.filter((task) => {
       return task.isComplete;
@@ -97,8 +125,13 @@ function showTodo() {
     todoCountCompleted.textContent = completedTasksArr.length;
   }
 
-  function updateLocal() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+  /**
+   * Обновляет список задач в локальном хранилище
+   *
+   * @param {object} tasksList Массив задач.
+   */
+  function updateLocal(tasksList) {
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
   }
 
   checkTodo.addEventListener('change', () => {
@@ -126,7 +159,7 @@ function showTodo() {
       todoError.textContent = '';
       tasksRender(tasks);
       showQuantityTasks(tasks);
-      updateLocal();
+      updateLocal(tasks);
     }
   });
 
@@ -140,7 +173,7 @@ function showTodo() {
       tasks[searchIndex].isComplete = !tasks[searchIndex].isComplete;
       tasksRender(tasks);
       showCompletedTasks(tasks);
-      updateLocal();
+      updateLocal(tasks);
     }
   });
 
@@ -157,7 +190,7 @@ function showTodo() {
       tasksRender(tasks);
       showQuantityTasks(tasks);
       showCompletedTasks(tasks);
-      updateLocal();
+      updateLocal(tasks);
     }
   });
 }

@@ -82,7 +82,7 @@ function showGreetingContainer() {
 
   window.addEventListener('load', getNameHandler);
 
-  setInterval(updateGreetingContainer(hash), 1000);
+  setInterval(() => updateGreetingContainer(hash), 1000);
 
   setTimeout(function () {
     if (preloader) {

@@ -65,13 +65,8 @@ radioLangList.forEach((radioElem) => {
 radioLangList.forEach((radioElem) => {
   radioElem.addEventListener('click', () => {
     settings.language = radioElem.id;
-    changeURLLanguage();
     updateLocal();
-    showGreetingContainer();
-    showWeather();
-    showQuote();
-    changeLanguagePage();
-    showTodo();
+    location.reload();
   });
 });
 
